@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/668/trunk/lib/bridges/file_column/lib
+END
+file_column_helpers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/668/trunk/lib/bridges/file_column/lib/file_column_helpers.rb
+END
+form_ui.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/668/trunk/lib/bridges/file_column/lib/form_ui.rb
+END
+list_ui.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/668/trunk/lib/bridges/file_column/lib/list_ui.rb
+END
+as_file_column_bridge.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/668/trunk/lib/bridges/file_column/lib/as_file_column_bridge.rb
+END

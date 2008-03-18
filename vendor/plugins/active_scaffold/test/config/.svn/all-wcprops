@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/636/trunk/test/config
+END
+update_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/636/trunk/test/config/update_test.rb
+END

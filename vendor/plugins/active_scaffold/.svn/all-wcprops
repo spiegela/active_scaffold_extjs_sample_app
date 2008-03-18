@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 23
+/svn/!svn/ver/736/trunk
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/!svn/ver/693/trunk/Rakefile
+END
+init.rb
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/728/trunk/init.rb
+END
+environment.rb
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/732/trunk/environment.rb
+END
+CHANGELOG
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/724/trunk/CHANGELOG
+END
+install.rb
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/728/trunk/install.rb
+END
+MIT-LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/2/trunk/MIT-LICENSE
+END
+install_assets.rb
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/728/trunk/install_assets.rb
+END
+uninstall.rb
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/91/trunk/uninstall.rb
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/svn/!svn/ver/90/trunk/README
+END

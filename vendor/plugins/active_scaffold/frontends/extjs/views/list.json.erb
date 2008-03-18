@@ -1,0 +1,12 @@
+{'metaData': {
+  totalProperty: 'results',
+  root: 'rows',
+  id: 'id',
+  fields: [
+    <%= active_scaffold_config.list.columns.collect {|c| "{name: \"#{c.name}\"}"}.join(", ") %>
+    ]
+  },
+  results: <%= @records.length %>, rows: [
+	<%= render :partial => 'list_record', :collection => @records, :locals => { :hidden => false } %>
+  ]
+}

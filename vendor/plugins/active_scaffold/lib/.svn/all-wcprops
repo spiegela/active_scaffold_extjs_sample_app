@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 27
+/svn/!svn/ver/736/trunk/lib
+END
+configurable.rb
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/689/trunk/lib/configurable.rb
+END
+exceptions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/474/trunk/lib/exceptions.rb
+END
+paginator.rb
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/92/trunk/lib/paginator.rb
+END
+active_record_permissions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/653/trunk/lib/active_record_permissions.rb
+END
+dhtml_confirm.rb
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/421/trunk/lib/dhtml_confirm.rb
+END
+attribute_params.rb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/710/trunk/lib/attribute_params.rb
+END
+constraints.rb
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/703/trunk/lib/constraints.rb
+END
+finder.rb
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/686/trunk/lib/finder.rb
+END
+responds_to_parent.rb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/678/trunk/lib/responds_to_parent.rb
+END
+active_scaffold.rb
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/732/trunk/lib/active_scaffold.rb
+END

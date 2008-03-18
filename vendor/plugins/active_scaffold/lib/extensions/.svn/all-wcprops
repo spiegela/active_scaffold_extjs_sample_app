@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/736/trunk/lib/extensions
+END
+action_controller_rendering.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/732/trunk/lib/extensions/action_controller_rendering.rb
+END
+array.rb
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/2/trunk/lib/extensions/array.rb
+END
+component_response_with_namespacing.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/491/trunk/lib/extensions/component_response_with_namespacing.rb
+END
+error_messages.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/548/trunk/lib/extensions/error_messages.rb
+END
+to_label.rb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/491/trunk/lib/extensions/to_label.rb
+END
+json_mime_type.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/492/trunk/lib/extensions/json_mime_type.rb
+END
+hashes_in_url_for.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/506/trunk/lib/extensions/hashes_in_url_for.rb
+END
+reverse_associations.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/426/trunk/lib/extensions/reverse_associations.rb
+END
+name_option_for_datetime.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/491/trunk/lib/extensions/name_option_for_datetime.rb
+END
+localize.rb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/548/trunk/lib/extensions/localize.rb
+END
+unsaved_record.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/491/trunk/lib/extensions/unsaved_record.rb
+END
+action_view_rendering.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/736/trunk/lib/extensions/action_view_rendering.rb
+END
+unsaved_associated.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/491/trunk/lib/extensions/unsaved_associated.rb
+END
+generic_view_paths.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/732/trunk/lib/extensions/generic_view_paths.rb
+END
+nil_id_in_url_params.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/413/trunk/lib/extensions/nil_id_in_url_params.rb
+END
+resources.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/662/trunk/lib/extensions/resources.rb
+END

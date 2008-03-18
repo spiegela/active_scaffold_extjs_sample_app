@@ -1,0 +1,7 @@
+var <%= controller_id %>_ds = new Ext.data.Store({
+  proxy: new Ext.data.HttpProxy({
+    url: '<%= url_for(params.merge(:format => :json)) %>',
+    method: 'GET'
+  }),
+  reader: new Ext.data.JsonReader()
+});
