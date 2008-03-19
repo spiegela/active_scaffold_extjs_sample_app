@@ -16,7 +16,7 @@ var <%= controller_id %>_tb = <%= controller_id %>_grid.getTopToolbar();
 );
 
 <% end -%>
-<% if active_scaffold_config.action_links[:live_search] -%>
+<% if active_scaffold_config.action_links[:show_search] -%>
 // Add listener support for the text field
 Ext.override(Ext.form.Field, {
         fireKey : function(e) {
@@ -50,11 +50,6 @@ var <%=controller_id %>_livesearch = new Ext.form.TextField({
        },
        delay: 0 }
   }
-});
-
-<%=controller_id %>_livesearch.on('keyup', function(e,type){
-  var query_string = e.getValue();
-  <%=controller_id %>_ds.load({params: {search: query_string}});
 });
 
 <%= controller_id %>_tb.add('-', <%=controller_id %>_livesearch);
