@@ -1,0 +1,63 @@
+
+<% link_params = params_for(:action => :table) %>
+var <%= controller_id %>_tb = <%= controller_id %>_grid.getTopToolbar();
+
+<% active_scaffold_config.action_links.each :table do |link| -%>
+
+<% url_options = link_params.clone -%>
+<% link_options, html_options = action_link_options(link, url_options) -%>
+<% next if controller.respond_to? link.security_method and !controller.send(link.security_method) -%>
+<% next if link.action == "show_search" -%>
+<%= controller_id %>_tb.add(
+	{	text: '<%= link.label %>',
+		iconCls:'add',
+		handler: function(){ window.location.href = '<%= url_for(link_options) %>'; }
+	}
+);
+
+<% end -%>
+<% if active_scaffold_config.action_links[:live_search] -%>
+// Add listener support for the text field
+Ext.override(Ext.form.Field, {
+        fireKey : function(e) {
+            if(((Ext.isIE && e.type == 'keydown') || e.type == 'keypress') && e.isSpecialKey()) {
+                this.fireEvent('specialkey', this, e);
+            }
+            else {
+                this.fireEvent(e.type, this, e);
+            }
+        }
+      , initEvents : function() {
+            this.el.on("focus", this.onFocus,  this);
+            this.el.on("blur", this.onBlur,  this);
+            this.el.on("keydown", this.fireKey, this);
+            this.el.on("keypress", this.fireKey, this);
+            this.el.on("keyup", this.fireKey, this);
+            this.originalValue = this.getValue();
+        }
+ });
+ 
+var <%=controller_id %>_livesearch = new Ext.form.TextField({
+  fieldLabel: 'Live Search',
+  name: 'search',
+  emptyText: 'Live Search',
+  allowBlank: 'true',
+  listeners: {
+    'click': {
+	  fn: function(e,type){
+        var query_string = e.getValue();
+        <%=controller_id %>_ds.load({params: {search: query_string}});
+	  },
+	  delay: 0
+  	}
+  }
+});
+
+<%=controller_id %>_livesearch.on('keyup', function(e,type){
+  var query_string = e.getValue();
+  <%=controller_id %>_ds.load({params: {search: query_string}});
+});
+
+<%= controller_id %>_tb.add('-', <%=controller_id %>_livesearch);
+
+<% end -%>
