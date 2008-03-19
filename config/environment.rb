@@ -57,3 +57,7 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
 end
+
+# This will be added to the bridge plugin environment.rb (or init.rb)
+require 'extjs_list_action'
+require 'extjs_view_helpers'

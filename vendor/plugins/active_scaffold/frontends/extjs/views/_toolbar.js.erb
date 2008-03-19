@@ -36,20 +36,19 @@ Ext.override(Ext.form.Field, {
             this.originalValue = this.getValue();
         }
  });
- 
+
 var <%=controller_id %>_livesearch = new Ext.form.TextField({
   fieldLabel: 'Live Search',
   name: 'search',
   emptyText: 'Live Search',
   allowBlank: 'true',
   listeners: {
-    'click': {
-	  fn: function(e,type){
-        var query_string = e.getValue();
-        <%=controller_id %>_ds.load({params: {search: query_string}});
-	  },
-	  delay: 0
-  	}
+    'keyup': {
+       fn: function(e,type){
+         var query_string = e.getValue();
+         <%=controller_id %>_ds.load({params: {search: query_string}});
+       },
+       delay: 0 }
   }
 });
 

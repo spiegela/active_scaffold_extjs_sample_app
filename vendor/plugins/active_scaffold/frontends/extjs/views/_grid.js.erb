@@ -1,4 +1,4 @@
-var grid = new Ext.grid.GridPanel({
+var <%= controller_id %>_grid = new Ext.grid.GridPanel({
   ds: <%= controller_id %>_ds,
   cm: <%= controller_id %>_cm,
   sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
@@ -7,61 +7,18 @@ var grid = new Ext.grid.GridPanel({
   width:      540,
   height:     208,
   stripeRows: 'true',
+  remoteSort: 'true',
   viewConfig: {
     forceFit:'true'
   },
 
   // inline toolbars
-  tbar:[{
-    text:'New...',
-    tooltip:'Create new <%= active_scaffold_config.model.name.humanize %>',
-    handler: function(){ window.location.href = '<%= url_for(params.merge(:action => 'create')) %>'; },
-    iconCls:'add'
-  }, '-', {
-    text:'Edit...',
-    tooltip:'Edit selected <%= active_scaffold_config.model.name.humanize %>',
-    handler: function(){
-    var selected = grid.getSelectionModel().getSelected();
-    if(selected) {
-      window.location.href = '<%= url_for(params.merge(:action => 'edit')) %>/' + selected.data.id;
-    } else { 
-      alert('Please select a row first.');
-    }
-  },
-  iconCls:'edit'
-  },'-',{
-    text:'Delete...',
-    tooltip:'Delete selected <%= active_scaffold_config.model.name.humanize %>',
-    handler: function(){
-      var selected = grid.getSelectionModel().getSelected();
-      if(selected) {
-        if(confirm('Really delete?')) {
-          var conn = new Ext.data.Connection();
-          conn.request({
-            url: '<%= url_for(params.merge(:action => 'delete')) %>/' + selected.data.id,
-            method: 'POST',
-            params: { _method: 'DELETE' },
-            success: function(response, options){ ds.load(); },
-            failure: function(response, options){ alert('Delete operation failed.'); }
-          });
-        }
-      } else { 
-        alert('Please select a row first.');
-      }
-    },
-    iconCls:'remove'
-  }],
-  bbar: new Ext.PagingToolbar({
-    pageSize: <%= active_scaffold_config.list.per_page %>,
-    store: <%= controller_id %>_ds,
-    displayInfo: true,
-    displayMsg: 'Record {0} - {1} of {2}',
-    emptyMsg: "No records found"
-  })
+  tbar: new Ext.Toolbar(),
+  bbar: new Ext.Toolbar()
 });
 
 // show record on double-click
-grid.on("rowdblclick", function(grid, row, e) {
+<%= controller_id %>_grid.on("rowdblclick", function(grid, row, e) {
   window.location.href = '#{collection_path}/' + grid.getStore().getAt(row).id;
 });
 

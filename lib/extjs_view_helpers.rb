@@ -36,10 +36,9 @@
         end
         return url_options, html_options
       end
-      
+
       def render_action_link(link, url_options)
-        url_options = url_options.clone      
-        
+        url_options = url_options.clone
          # issue 260, use url_options[:link] if it exists. This prevents DB data from being localized.
         label = url_options.delete(:link) || link.label
         html_options, url_options = action_link_options(link, url_options)
