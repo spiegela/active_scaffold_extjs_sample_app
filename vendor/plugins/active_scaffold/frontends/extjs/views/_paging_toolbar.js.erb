@@ -1,7 +1,7 @@
-<%= controller_id %>_bb = new Ext.PagingToolbar({
-    pageSize: <%= active_scaffold_config.list.per_page %>,
-    store: <%= controller_id %>_ds,
-    displayInfo: true,
-    displayMsg: 'Record {0} - {1} of {2}',
-    emptyMsg: "No records found"
-  })
+var <%= controller_id %>_paging_toolbar = new Ext.PagingToolbar({
+  pageSize: <%= active_scaffold_config.list.per_page %>,
+  store: <%= controller_id %>_ds,
+  emptyMsg: "No records found",
+  displayInfo: true,
+  displayMsg: 'Displaying topics {0} - {1} of {2}'
+});
