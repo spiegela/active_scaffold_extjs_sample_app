@@ -1,5 +1,4 @@
-
-<% link_params = params_for(:action => :table) %>
+<% link_params = params_for(:action => :table, :format => 'js.erb') %>
 var <%= controller_id %>_tb = <%= controller_id %>_grid.getTopToolbar();
 
 <% active_scaffold_config.action_links.each :table do |link| -%>
@@ -11,7 +10,9 @@ var <%= controller_id %>_tb = <%= controller_id %>_grid.getTopToolbar();
 <%= controller_id %>_tb.add(
 	{	text: '<%= link.label %>',
 		iconCls:'add',
-		handler: function(){ window.location.href = '<%= url_for(link_options) %>'; }
+		handler: function(){ 
+		  Ext.Ajax.request({url: '<%= url_for(link_options) %>'});
+		}
 	}
 );
 
@@ -51,7 +52,7 @@ var <%=controller_id %>_livesearch = new Ext.form.TextField({
        delay: 0 }
   }
 });
-
+<%= controller_id %>_tb.addFill();
 <%= controller_id %>_tb.add('-', <%=controller_id %>_livesearch);
 
 <% end -%>

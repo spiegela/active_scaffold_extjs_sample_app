@@ -1,0 +1,24 @@
+<%= render :partial => 'record_form.js.erb' %>
+
+var <%= controller_id %>_create_window;
+if(!<%= controller_id %>_create_window){
+  <%= controller_id %>_create_window = new Ext.Window({
+      layout: 'fit',
+      width: 500,
+      height: 300,
+      closeAction: 'hide',
+      plain: 'true',
+      autoShow: 'true',
+      buttons: [{
+          text:'Create',
+          disabled:true
+      },{
+          text: 'Close',
+          handler: function(){
+              <%= controller_id %>_create_window.hide();
+          }
+      }]
+  });
+}
+//<%= controller_id %>_create_window.add(<%= controller_id %>_form);
+<%= controller_id %>_create_window.show();

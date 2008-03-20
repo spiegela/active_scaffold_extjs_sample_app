@@ -59,5 +59,5 @@ Rails::Initializer.run do |config|
 end
 
 # This will be added to the bridge plugin environment.rb (or init.rb)
-require 'extjs_list_action'
+require 'extjs_actions'
 require 'extjs_view_helpers'
