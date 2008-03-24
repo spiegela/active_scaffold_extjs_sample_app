@@ -1,5 +1,5 @@
 <% link_params = params_for(:action => :table, :format => 'js.erb') %>
-var <%= controller_id %>_tb = <%= controller_id %>_grid.getTopToolbar();
+var <%= controller_id %>_tb = document.<%= controller_id %>_grid.getTopToolbar();
 
 <% active_scaffold_config.action_links.each :table do |link| -%>
 

@@ -15,7 +15,7 @@ module ActiveScaffold::Actions
     end
   end
   
-  module create
+  module Create
     def create
       do_create
 
@@ -41,13 +41,12 @@ module ActiveScaffold::Actions
         type.js do
           render :action => 'create.rjs', :layout => false
         end
-        type.json do {
+        type.json do
           render :action => 'create', :layout => false
-        }
+        end
         type.xml { render :xml => response_object.to_xml, :content_type => Mime::XML, :status => response_status }
         type.yaml { render :text => response_object.to_yaml, :content_type => Mime::YAML, :status => response_status }
       end
     end
-    
   end
 end

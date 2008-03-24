@@ -1,43 +1,52 @@
-<% url_options = params_for(:action => :create) -%>
+<% url_options = params_for(:action => :create, :commit => :create) -%>
 try{
-var <%= controller_id %>_create_window;
-if(!<%= controller_id %>_create_window){
-  <%= controller_id %>_create_window = new Ext.Window({
-    title: "<%= active_scaffold_config.create.label %>",
-    layout: 'fit',
-    width: 500,
-    height: 300,
-    closeAction: 'hide',
-    plain: 'true',
-    items:[{
-      // form
-      xtype:'form',
-      name: '<%= controller_id %>_create_form',
-      frame:true,
-      labelWidth: 75,
-      method: 'POST',
-      border: false,
-      bodyStyle: 'padding:5px;',
-      defaultType: 'textfield',
-      defaults:{anchor:'100%'},
-      url: '<%= url_for(url_options) %>',
-      buttons: [
-        {text: 'Save',
-         handler: function(){ 
-           document.<%= controller_id %>_create_form.submit();
-         }
-        },
-        {text: 'Cancel', 
-         handler: function(){ <%= controller_id %>_create_window.hide();}
-        }
-      ],
-      items: [
-        <%= render :partial => 'form.js.erb', :locals => {
-          :columns => active_scaffold_config.create.columns, :attr_types => [:normal] } %>
-      ]
-    }]
-  });
-}
+var  <%= controller_id %>_create_form = new Ext.FormPanel({
+	name: '<%= controller_id %>_create_form',
+	frame: 'true',
+	labelWidth: 75,
+	method: 'POST',
+	border: false,
+	bodyStyle: 'padding:5px;',
+	defaultType: 'textfield',
+	defaults:{anchor:'100%'},
+	url: '<%= url_for(url_options) %>',
+	baseParams: {
+	  <%= request_forgery_protection_token %>: '<%= form_authenticity_token %>',
+	  format: 'json'
+	},
+	success: function(form, response){
+      Ext.MessageBox.alert('Status', '<%= active_scaffold_config.model.name.humanize %> Successfully Created.');
+	  document.<%= controller_id %>_grid.getStore().load();
+	},
+	buttons: [
+	{ text: 'Save',
+	  handler: function(){ 
+	    <%= controller_id %>_create_form.getForm().submit();
+	  },
+	  method:'POST', 
+      waitTitle:'Connecting', 
+      waitMsg:'Creating <%= active_scaffold_config.model.name.humanize %>...'
+	 },
+	{ text: 'Cancel', 
+	  handler: function(){ <%= controller_id %>_create_window.hide();}
+	}
+	],
+	items: [
+	<%= render :partial => 'form.js.erb', :locals => {
+	  :columns => active_scaffold_config.create.columns } %>
+	]
+});
+
+var  <%= controller_id %>_create_window = new Ext.Window({
+	title: "<%= active_scaffold_config.create.label %>",
+	layout: 'fit',
+	width: 500,
+	height: 300,
+	closeAction: 'hide',
+	plain: 'true',
+	items: [<%= controller_id %>_create_form]
+});
+<%= controller_id %>_create_window.add(<%= controller_id %>_create_form);
 <%= controller_id %>_create_window.show();
 } catch(e){
   alert(e);

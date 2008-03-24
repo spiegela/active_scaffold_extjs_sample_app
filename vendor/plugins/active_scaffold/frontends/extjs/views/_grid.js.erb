@@ -1,4 +1,5 @@
-var <%= controller_id %>_grid = new Ext.grid.GridPanel({
+document.<%= controller_id %>_grid = new Ext.grid.GridPanel({
+  id: '<%= controller_id %>_grid',
   ds: <%= controller_id %>_ds,
   cm: <%= controller_id %>_cm,
   sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
