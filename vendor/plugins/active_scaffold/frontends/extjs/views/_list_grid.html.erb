@@ -1,0 +1,20 @@
+<script type='text/javascript'>
+Ext.onReady(function(){
+	
+var <%= controller_id %>_ds = <%= render :partial => 'data_source.js.erb',
+  :locals => {:url => url_for(params.merge(:format => 'json'))}%>;
+
+var <%= controller_id %>_cm = <%= render :partial => 'column_model.js.erb',
+  :locals => {:columns => active_scaffold_config.list.columns}%>;
+
+<%= render :partial => 'paging_toolbar.js.erb' %>
+
+<%= render :partial => 'grid.js.erb' %>
+
+<%= render :partial => 'list_toolbar.js.erb' %>
+
+});
+</script>
+<div id='<%= controller_id %>-grid'>
+  
+</div>

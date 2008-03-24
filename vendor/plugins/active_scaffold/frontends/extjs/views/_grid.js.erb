@@ -9,6 +9,10 @@ var <%= controller_id %>_grid = new Ext.grid.GridPanel({
   stripeRows: 'true',
   remoteSort: 'true',
   loadMask: 'true',
+  listeners: { 'rowdblclick': function(grid, row, e) {
+                 window.location.href = "<%= url_for(:controller => controller_id, :action => 'show') %>/" + grid.getStore().getAt(row).id;
+                }
+  },
   viewConfig: {
     forceFit:'true'
   },
@@ -17,10 +21,3 @@ var <%= controller_id %>_grid = new Ext.grid.GridPanel({
   tbar: new Ext.Toolbar(),
   bbar: <%= controller_id %>_paging_toolbar
 });
-
-// show record on double-click
-<%= controller_id %>_grid.on("rowdblclick", function(grid, row, e) {
-  window.location.href = '#{collection_path}/' + grid.getStore().getAt(row).id;
-});
-
-<%= controller_id %>_ds.load();

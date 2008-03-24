@@ -1,0 +1,16 @@
+<% columns.each :for => @record do |column| -%>
+  <% if is_subsection? column and attr_types.include?(:subsection) -%>
+      { xtype: 'fieldset',
+        name: '<%= column.label %>'
+        collapsed: '<%= column.collapsed ? 'true' : 'false' %>',
+        collapsible: 'true'
+        items: [
+          <%= render :partial => 'form', :locals => { :columns => column } %>
+        ]
+      }
+  <% elsif is_subform? column and !override_form_field?(column) and attr_types.include?(:subform) -%>
+    <%= render :partial => form_partial_for_column(column), :locals => { :column => column } -%>
+  <% elsif attr_types.include?(:normal) -%>
+    <%= render :partial => form_partial_for_column(column), :locals => { :column => column } -%>
+  <% end -%>
+<% end -%>

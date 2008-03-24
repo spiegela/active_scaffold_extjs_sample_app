@@ -61,3 +61,5 @@ end
 # This will be added to the bridge plugin environment.rb (or init.rb)
 require 'extjs_actions'
 require 'extjs_view_helpers'
+require 'config_form_ui'
+require 'form_column_helpers'

@@ -1,0 +1,44 @@
+<% url_options = params_for(:action => :create) -%>
+try{
+var <%= controller_id %>_create_window;
+if(!<%= controller_id %>_create_window){
+  <%= controller_id %>_create_window = new Ext.Window({
+    title: "<%= active_scaffold_config.create.label %>",
+    layout: 'fit',
+    width: 500,
+    height: 300,
+    closeAction: 'hide',
+    plain: 'true',
+    items:[{
+      // form
+      xtype:'form',
+      name: '<%= controller_id %>_create_form',
+      frame:true,
+      labelWidth: 75,
+      method: 'POST',
+      border: false,
+      bodyStyle: 'padding:5px;',
+      defaultType: 'textfield',
+      defaults:{anchor:'100%'},
+      url: '<%= url_for(url_options) %>',
+      buttons: [
+        {text: 'Save',
+         handler: function(){ 
+           document.<%= controller_id %>_create_form.submit();
+         }
+        },
+        {text: 'Cancel', 
+         handler: function(){ <%= controller_id %>_create_window.hide();}
+        }
+      ],
+      items: [
+        <%= render :partial => 'form.js.erb', :locals => {
+          :columns => active_scaffold_config.create.columns, :attr_types => [:normal] } %>
+      ]
+    }]
+  });
+}
+<%= controller_id %>_create_window.show();
+} catch(e){
+  alert(e);
+}

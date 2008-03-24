@@ -1,18 +1,2 @@
-<script type='text/javascript'>
-Ext.onReady(function(){
-	
-<%= render :partial => 'data_source.js.erb' %>
-
-<%= render :partial => 'column_model.js.erb' %>
-
-<%= render :partial => 'paging_toolbar.js.erb' %>
-
-<%= render :partial => 'grid.js.erb' %>
-
-<%= render :partial => 'toolbar.js.erb' %>
-
-});
-</script>
-<div id='<%= controller_id %>-grid'>
-  
-</div>
+<% form_ui = active_scaffold_config.list.form_ui || :grid -%>
+<%= render :partial => "list_#{form_ui}" %>
