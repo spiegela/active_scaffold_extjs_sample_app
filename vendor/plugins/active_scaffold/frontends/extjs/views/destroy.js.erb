@@ -1,0 +1,23 @@
+<% url_options = params_for(:action => :destroy, :commit => :destroy) -%>
+
+
+
+function confirmDestroy(){
+	var m = grid.getSelections();
+	if(m.length > 0) {
+		Ext.MessageBox.confirm('Message', 'Do you really want to delete it?',
+			function(buttonClicked, grid){
+				Ext.Ajax.request({
+				  url: <%= url_for(url_options) %>,
+				  success: someFn,
+				  failure: otherFn,
+                  method: 'POST',
+                  params: { _method: 'DELETE',
+                  	<%= request_forgery_protection_token %>: '<%= form_authenticity_token %>' }
+				});
+			}
+		);	
+	} else {
+		Ext.MessageBox.alert('Message', 'Please select at least one item to delete');
+	}
+}
