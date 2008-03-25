@@ -1,0 +1,42 @@
+<% url_options = params_for(:action => link.action, :format => 'js.erb')
+   link_options, html_options = action_link_options(link, url_options)
+ -%>
+
+  {	text: '<%= link.label %>',
+    iconCls:'add',
+    handler: function(){
+<% if link.type == :record -%>
+      var selected = document.<%= controller_id %>_grid.getSelectionModel().getSelected();
+      var url;
+	  if(selected) {
+	    url = '<%= url_for(:action => link_options[:action], :controller => link_options[:controller]) %>/' + selected.id;
+	  } else {
+	    Ext.MessageBox.alert('Message', 'You must select an item');
+	  }
+<% elsif link.type == :table -%>
+      var url = '<%= url_for(:action => link_options[:action], :controller => link_options[:controller]) %>';
+<% end -%>
+<% if link.confirm -%>
+      Ext.MessageBox.confirm('Message', '<%= link.confirm %>',
+        function(buttonClicked){
+<% end -%>
+          Ext.Ajax.request(
+            { url: url,
+<% if link.parameters -%>
+              params: '<%= link.parameters.merge(
+                request_forgery_protection_token => form_authenticity_token,
+                :format => 'js.erb' ).to_json %>',
+<% else -%>
+              params: {
+			    <%= request_forgery_protection_token %>: "<%= form_authenticity_token %>"
+			  },
+<% end -%>
+              method: '<%= link.method %>'
+            }
+<% if link.confirm -%>
+          )
+        }
+<% end -%>
+      );
+    }
+  }

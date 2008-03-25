@@ -1,6 +1,6 @@
 <% url_options = params_for(:action => :create, :commit => :create) -%>
 try{
-var  <%= controller_id %>_create_form = new Ext.FormPanel({
+var <%= controller_id %>_create_form = new Ext.FormPanel({
 	name: '<%= controller_id %>_create_form',
 	frame: 'true',
 	labelWidth: 75,
@@ -13,20 +13,27 @@ var  <%= controller_id %>_create_form = new Ext.FormPanel({
 	baseParams: {
 	  <%= request_forgery_protection_token %>: '<%= form_authenticity_token %>', format: 'json'
 	},
-	buttons: [
-	  { text: 'Save',
-	    handler: handleCreate(<%= controller_id %>_create_form.getForm()),
-	    method:'POST'
-	   },
-	  { text: 'Cancel', 
-	    handler: function(){ <%= controller_id %>_create_window.hide();}
-	  }
-	],
 	items: [
       <%= render :partial => 'form.js.erb', :locals => {
 	    :columns => active_scaffold_config.create.columns } %>
 	]
 });
+<%= controller_id %>_create_form.addButton(
+  { text: 'Save',
+    handler: function(){
+      <%= controller_id %>_create_form.getForm().submit( {
+        reset: 'true',
+        success: successfulCreate,
+        failure: failedCreate
+      } );
+    }
+  }
+);
+<%= controller_id %>_create_form.addButton(
+  { text: 'Cancel', 
+    handler: function(){ <%= controller_id %>_create_window.hide();}
+  }
+);
 
 var  <%= controller_id %>_create_window = new Ext.Window({
 	title: "<%= active_scaffold_config.create.label %>",
@@ -44,10 +51,11 @@ var  <%= controller_id %>_create_window = new Ext.Window({
 <%= controller_id %>_create_window.show();
 
 function handleCreate(){
+	form = <%= controller_id %>_create_form.getForm();
 	form.submit( {
-		reset: 'false',
-		success: successfulCreate(),
-		failure: failedCreate() }
+		reset: 'true',
+		success: successfulCreate,
+		failure: failedCreate } );
 }
 
 function successfulCreate(){

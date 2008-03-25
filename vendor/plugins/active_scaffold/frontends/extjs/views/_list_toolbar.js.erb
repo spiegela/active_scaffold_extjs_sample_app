@@ -1,40 +1,14 @@
-<% link_params = params_for(:action => :table, :format => 'js.erb') %>
 var <%= controller_id %>_tb = document.<%= controller_id %>_grid.getTopToolbar();
 
-<% active_scaffold_config.action_links.each :table do |link| -%>
-
-<% url_options = link_params.clone -%>
-<% link_options, html_options = action_link_options(link, url_options) -%>
-<% next if controller.respond_to? link.security_method and !controller.send(link.security_method) -%>
-<% next if link.action == "show_search" -%>
+<% active_scaffold_config.action_links.each do |link|
+     next if controller.respond_to? link.security_method and !controller.send(link.security_method)
+     next if link.action == "show_search"
+-%>
 <%= controller_id %>_tb.add(
-	{	text: '<%= link.label %>',
-		iconCls:'add',
-		handler: function(){ 
-		  Ext.Ajax.request({url: '<%= url_for(link_options) %>'});
-		}
-	}
+<%= render :partial => 'action_link_button.js.erb', :locals => {:link => link} %>
 );
 
 <% end -%>
-
-<% active_scaffold_config.action_links.each :record do |link| -%>
-
-<% url_options = link_params.clone -%>
-<% link_options, html_options = action_link_options(link, url_options) -%>
-<% next if controller.respond_to? link.security_method and !controller.send(link.security_method) -%>
-<% next if link.action == "show_search" -%>
-<%= controller_id %>_tb.add(
-	{	text: '<%= link.label %>',
-		iconCls:'add',
-		handler: function(){ 
-		  Ext.Ajax.request({url: '<%= url_for(link_options) %>'});
-		}
-	}
-);
-
-<% end -%>
-
 
 <% if active_scaffold_config.action_links[:show_search] -%>
 // Add listener support for the text field
