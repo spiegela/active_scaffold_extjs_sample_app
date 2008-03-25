@@ -3,7 +3,7 @@
   root: 'rows',
   id: 'id',
   fields: [
-    <%= active_scaffold_config.list.columns.collect {|c| "{name: \"#{c.name}\"}"}.join(", ") %>
+    {id: 'id'}, <%= active_scaffold_config.list.columns.collect {|c| "{name: \"#{c.name}\"}"}.join(", ") %>
     ]
   },
   results: <%= @records.length %>, rows: [

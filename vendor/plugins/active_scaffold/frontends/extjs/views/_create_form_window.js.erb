@@ -11,29 +11,20 @@ var  <%= controller_id %>_create_form = new Ext.FormPanel({
 	defaults:{anchor:'100%'},
 	url: '<%= url_for(url_options) %>',
 	baseParams: {
-	  <%= request_forgery_protection_token %>: '<%= form_authenticity_token %>',
-	  format: 'json'
-	},
-	success: function(form, response){
-      Ext.MessageBox.alert('Status', '<%= active_scaffold_config.model.name.humanize %> Successfully Created.');
-	  document.<%= controller_id %>_grid.getStore().load();
+	  <%= request_forgery_protection_token %>: '<%= form_authenticity_token %>', format: 'json'
 	},
 	buttons: [
-	{ text: 'Save',
-	  handler: function(){ 
-	    <%= controller_id %>_create_form.getForm().submit();
-	  },
-	  method:'POST', 
-      waitTitle:'Connecting', 
-      waitMsg:'Creating <%= active_scaffold_config.model.name.humanize %>...'
-	 },
-	{ text: 'Cancel', 
-	  handler: function(){ <%= controller_id %>_create_window.hide();}
-	}
+	  { text: 'Save',
+	    handler: handleCreate(<%= controller_id %>_create_form.getForm()),
+	    method:'POST'
+	   },
+	  { text: 'Cancel', 
+	    handler: function(){ <%= controller_id %>_create_window.hide();}
+	  }
 	],
 	items: [
-	<%= render :partial => 'form.js.erb', :locals => {
-	  :columns => active_scaffold_config.create.columns } %>
+      <%= render :partial => 'form.js.erb', :locals => {
+	    :columns => active_scaffold_config.create.columns } %>
 	]
 });
 
@@ -46,8 +37,24 @@ var  <%= controller_id %>_create_window = new Ext.Window({
 	plain: 'true',
 	items: [<%= controller_id %>_create_form]
 });
-<%= controller_id %>_create_window.add(<%= controller_id %>_create_form);
-<%= controller_id %>_create_window.show();
 } catch(e){
   alert(e);
+}
+<%= controller_id %>_create_window.add(<%= controller_id %>_create_form);
+<%= controller_id %>_create_window.show();
+
+function handleCreate(){
+	form.submit( {
+		reset: 'false',
+		success: successfulCreate(),
+		failure: failedCreate() }
+}
+
+function successfulCreate(){
+	<%= controller_id %>_create_window.hide();
+	document.<%= controller_id %>_grid.getStore().load(); 
+}
+
+function failedCreate(){
+	Ext.MessageBox.alert('Status', 'Creation of <%= active_scaffold_config.model.name.humanize %> failed.');
 }
