@@ -1,4 +1,3 @@
-<script type='text/javascript'>
 Ext.onReady(function(){
 	
 var <%= controller_id %>_ds = <%= render :partial => 'data_source.js.erb',
@@ -9,12 +8,8 @@ var <%= controller_id %>_cm = <%= render :partial => 'column_model.js.erb',
 
 <%= render :partial => 'paging_toolbar.js.erb' %>
 
-<%= render :partial => 'grid.js.erb' %>
+document.<%= controller_id %>_grid = <%= render :partial => 'grid.js.erb' %>;
 
 <%= render :partial => 'list_toolbar.js.erb' %>
 
 });
-</script>
-<div id='<%= controller_id %>-grid'>
-  
-</div>

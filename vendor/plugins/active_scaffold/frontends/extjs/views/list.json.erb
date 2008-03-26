@@ -1,12 +1,13 @@
 {'metaData': {
-  totalProperty: 'results',
+  totalProperty: 'totalCount',
   root: 'rows',
   id: 'id',
+  remoteSort: true,
   fields: [
     {id: 'id'}, <%= active_scaffold_config.list.columns.collect {|c| "{name: \"#{c.name}\"}"}.join(", ") %>
     ]
   },
-  results: <%= @records.length %>, rows: [
-	<%= render :partial => 'list_record', :collection => @records, :locals => { :hidden => false } %>
+  totalCount: <%= @records.length %>, rows: [
+	<%= render :partial => 'list_record', :collection => @page.items, :locals => { :hidden => false } %>
   ]
 }

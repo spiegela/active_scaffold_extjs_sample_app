@@ -1,0 +1,13 @@
+<%= controller_id %>_nested_grid = <%= render :partial => 'grid.js.erb' %>;
+
+var  <%= controller_id %>_nested_window = new Ext.Window({
+	title: "<%= active_scaffold_config.create.label %>",
+	layout: 'fit',
+	width: 500,
+	height: 300,
+	closeAction: 'hide',
+	plain: 'true'
+});
+
+<%= controller_id %>_nested_window.add(<%= controller_id %>_nested_grid);
+<%= controller_id %>_nested_window.show();

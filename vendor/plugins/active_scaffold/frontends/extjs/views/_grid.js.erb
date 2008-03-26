@@ -1,4 +1,4 @@
-document.<%= controller_id %>_grid = new Ext.grid.GridPanel({
+new Ext.grid.GridPanel({
   id: '<%= controller_id %>_grid',
   ds: <%= controller_id %>_ds,
   cm: <%= controller_id %>_cm,
@@ -21,4 +21,4 @@ document.<%= controller_id %>_grid = new Ext.grid.GridPanel({
   // inline toolbars
   tbar: new Ext.Toolbar(),
   bbar: <%= controller_id %>_paging_toolbar
-});
+})
