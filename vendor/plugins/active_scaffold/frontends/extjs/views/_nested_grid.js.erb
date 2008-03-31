@@ -1,0 +1,25 @@
+var <%= controller_id %>_ds = <%= render :partial => 'data_source.js.erb',
+  :locals => {
+    :url => url_for(:controller => controller_id, :action => 'list', :format => 'json')
+  }%>;
+
+var <%= controller_id %>_cm = <%= render :partial => 'column_model.js.erb',
+  :locals => {:columns => active_scaffold_config.list.columns}%>;
+
+var <%= controller_id %>_cell_actions = <%= render :partial => 'cell_actions.js.erb' %>;
+
+<%= render :partial => 'paging_toolbar.js.erb' %>
+
+<%= controller_id %>_nested_grid = <%= render :partial => 'nested_grid_panel.js.erb' %>;
+
+<%= controller_id %>_nested_window = new Ext.Window({
+	title: "<%= active_scaffold_config.create.label %>",
+	layout: 'fit',
+	width: 500,
+	height: 300,
+	closeAction: 'hide',
+	plain: 'true'
+});
+
+<%= controller_id %>_nested_window.add(<%= controller_id %>_nested_grid);
+<%= controller_id %>_nested_window.show();
