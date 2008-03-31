@@ -1,3 +1,9 @@
 new Ext.grid.ColumnModel([
-  <%= columns.collect{ |c|"{header: \"#{c.label}\", dataIndex: \"#{c.name}\", sortable: #{c.sortable?}}"}.join(",\n\t") %>
+  <% columns.each do |c| -%>
+    {id: "<%= c.name %>", header: "<%= c.label %>", dataIndex: "<%= c.name %>", sortable: "<%= c.sortable? %>"
+    <% if c.plural_association? -%>
+      , cellActions:[{ iconCls:'nested', qtip:'View <%= c.label %>'}]	
+    <% end -%>
+    },
+  <% end -%>
 ])

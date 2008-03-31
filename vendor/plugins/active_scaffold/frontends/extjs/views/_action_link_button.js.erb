@@ -1,7 +1,7 @@
 <% url_options = params_for(:action => link.action, :format => 'js.erb')
    link_options, html_options = action_link_options(link, url_options)
  -%>
-
+new Ext.Toolbar(
   {	text: '<%= link.label %>',
     iconCls:'add',
     handler: function(){
@@ -40,3 +40,4 @@
       );
     }
   }
+)

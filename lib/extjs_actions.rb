@@ -91,4 +91,15 @@ module ActiveScaffold::Actions
       end
     end
   end
+  
+  module Nested
+    def nested
+      do_nested
+
+      respond_to do |type|
+        type.html { render :partial => 'nested', :layout => true }
+        type.js { render :partial => 'nested.js.erb', :layout => false }
+      end
+    end
+  end
 end
