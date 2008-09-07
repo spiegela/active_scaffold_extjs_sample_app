@@ -1,2 +1,0 @@
-<% form_ui = active_scaffold_config_for(@record.class).subform.form_ui || :editor_grid -%>
-<%= render :partial => "form_association_#{form_ui.to_s}.js.erb", :locals => {:column => column} %>

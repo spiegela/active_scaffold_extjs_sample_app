@@ -1,9 +1,0 @@
-<% form_ui = active_scaffold_config.list.form_ui || :grid -%>
-<script type="text/javascript">
-Ext.onReady(function(){
-<%= render :partial => "list_#{form_ui}.js.erb" %>
-});
-</script>
-<div id='<%= controller_id %>-grid'>
-  
-</div>

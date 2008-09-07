@@ -1,6 +1,0 @@
-{
-  success: 'true',
-  data: [
-    <%= active_scaffold_config.create.columns.collect {|c| "{#{c.name}: \"#{@record.send(c.name)}\"}"}.join(", \t\t\n") %>
-  ]
-}

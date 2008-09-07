@@ -1,7 +1,0 @@
-var <%= controller_id %>_<%= @record.class.name.underscore %>_cm = new Ext.grid.ColumnModel([
-<%
-active_scaffold_config_for(@record.class).subform.columns.each :for => @record, :flatten => true do |column|
-  next unless in_subform?(column, parent_record) and column_renders_as(column) != :hidden
-  -%>
-  {header: "<%= column.label %>", dataIndex: "<%= column.name %>", sortable: "<%= column.sortable? %>"},
-<% end -%>

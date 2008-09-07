@@ -1,3 +1,0 @@
-	{ id: <%= list_record.id %>, <%= active_scaffold_config.list.columns.collect{ |c|
-		"'#{c.name}': '#{get_column_value(list_record, c)}'"}.join(", ") %>},
-	
