@@ -65,3 +65,7 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
 end
+require 'extjs_actions'
+require 'extjs_view_helpers'
+require 'config_form_ui'
+require 'form_column_helpers'
