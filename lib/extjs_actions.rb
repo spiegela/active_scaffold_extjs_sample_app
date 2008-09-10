@@ -4,7 +4,7 @@ module ActiveScaffold::Actions
       do_list
       respond_to do |type|
         type.html { render :action => 'list', :layout => true }
-        type.json { render :action => 'list', :layout => false }
+        type.json { render :action => 'list.json.erb', :layout => false}
         type.xml  { render :xml => response_object.to_xml, :content_type => Mime::XML, :status => response_status }
         type.yaml { render :text => response_object.to_yaml, :content_type => Mime::YAML, :status => response_status }
       end
@@ -65,7 +65,7 @@ module ActiveScaffold::Actions
           end
         end
         type.js   { render :action => 'create.js.erb', :layout => false }
-        type.json { render :action => 'create', :layout => false }
+        type.json { render :action => 'create.json.erb', :layout => false }
         type.xml  { render :xml => response_object.to_xml, :content_type => Mime::XML, :status => response_status }
         type.yaml { render :text => response_object.to_yaml, :content_type => Mime::YAML, :status => response_status }
       end

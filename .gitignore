@@ -1,3 +1,4 @@
 development.log
 mongrel.log
 .DS_Store
+*.tmproj
