@@ -65,7 +65,12 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
 end
-require 'extjs_actions'
+# This will all be loaded from a bridge once we're finished
+require 'extjs_actions/list'
+require 'extjs_actions/create'
+require 'extjs_actions/delete'
+require 'extjs_actions/nested'
+
 require 'extjs_view_helpers'
 require 'config_form_ui'
 require 'form_column_helpers'

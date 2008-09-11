@@ -1,0 +1,3 @@
+module ActiveScaffold::Actions
+
+end
