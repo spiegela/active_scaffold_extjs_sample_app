@@ -36,7 +36,8 @@ module ActiveScaffold
               # Replace regular input with default ext.js input
               <<-EOS
               { fieldLabel: '#{column.label}',
-                name: 'record[#{column.name}]'
+                name: 'record[#{column.name}]',
+                value: '#{@record.send(column.name)}'
               },
               EOS
             end

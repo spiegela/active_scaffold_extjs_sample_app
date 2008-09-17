@@ -69,6 +69,7 @@ end
 require 'extjs_actions/list'
 require 'extjs_actions/create'
 require 'extjs_actions/delete'
+require 'extjs_actions/update'
 require 'extjs_actions/nested'
 
 require 'extjs_view_helpers'
