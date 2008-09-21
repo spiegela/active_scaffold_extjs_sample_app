@@ -37,7 +37,9 @@ module ActiveScaffold
               <<-EOS
               { fieldLabel: '#{column.label}',
                 name: 'record[#{column.name}]',
-                value: '#{@record.send(column.name)}'
+                value: '#{@record.send(column.name)}',
+                autoWidth: true,
+                style: {'margin-right': '20px'}
               },
               EOS
             end

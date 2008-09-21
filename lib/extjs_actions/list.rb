@@ -19,13 +19,19 @@ module ActiveScaffold::Actions
       self.active_scaffold_joins.concat includes_for_list_columns
     
       options = {:sorting => active_scaffold_config.list.user.sorting,}
-      paginate = (params[:format].nil?) ? (accepts? :html, :js, :json) : [:html, :js, :json].include?(params[:format])
-      if paginate
-        options.merge!({
-          :per_page => active_scaffold_config.list.user.per_page,
-          :page => active_scaffold_config.list.user.page
-        })
+      params[:start] = params[:start].to_i
+      if params[:start] > 0
+        active_scaffold_config.list.user.page = (params[:start] / active_scaffold_config.list.user.per_page) + 1
+      else
+        active_scaffold_config.list.user.page = 1
       end
+      # paginate = (params[:format].nil?) ? (accepts? :html, :js, :json) : [:html, :js, :json].include?(params[:format])
+      #if paginate
+      options.merge!({
+        :per_page => active_scaffold_config.list.user.per_page,
+        :page => active_scaffold_config.list.user.page
+      })
+      #end
     
       page = find_page(options);
       if page.items.empty?
